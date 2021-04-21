@@ -1,0 +1,9 @@
+{
+  "expireInMillis": 120000,
+  "price": 128,
+  "quantity": 5500,
+  "security": "LTCUSDT",
+  "side": "BUY",
+  "timeInForce": "GTT",
+  "trader": "256135470"
+}

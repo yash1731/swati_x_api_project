@@ -1,0 +1,102 @@
+import groovy.json.JsonOutput
+
+pipeline {
+    agent { label 'aix-qa-agent' }
+
+    environment {
+        DEPLOYMENT_SVC      = "https://lab-deployment-service.apps.nonprod.aixtrade.io/api"
+        M2_HOME             = "${WORKSPACE}/maven/wrapper"
+        DIRECTORY           = "E2EServicesTest"
+        spring_profiles_active = "${params.APP_ENV}"
+    }
+
+    parameters {
+        choice(name: 'APP_ENV', choices: ['dev', 'qa1', 'qa2', 'uat', 'stg'], description: 'Select an Environment')
+        string(name: 'BRANCH', defaultValue: 'develop', description: 'Git Branch')
+    }
+
+    stages {
+        stage('Initialize') {
+            steps {
+                sh '''
+                    echo "Spring_profiles_active = ${spring_profiles_active}"
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                mvnw('compile', '--no-transfer-progress')
+            }
+        }
+
+        stage('Run Test') {
+            steps {
+                mvnw("test", "-Denv=${params.APP_ENV}", "--no-transfer-progress")
+            }
+            post {
+                always {
+                    buildName "#$BUILD_NUMBER (${params.APP_ENV})"
+                    buildDescription "#$BUILD_NUMBER (${params.APP_ENV})"
+                    cucumber trendsLimit: 10,
+                            fileIncludePattern: '**/*cucumber.json',
+                            sortingMethod: 'ALPHABETICAL',
+                            skipEmptyJSONFiles: true,
+                            expandAllSteps: true
+                    junit "${env.DIRECTORY}/target/surefire-reports/TEST-*.xml"
+                    allure([
+                            includeProperties: false,
+                            jdk              : '',
+                            properties       : [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results          : [[path: "${env.DIRECTORY}/target/allure-results"]]
+                    ])
+                    saveResults()
+                }
+            }
+        }
+    }
+}
+
+def mvnw(String... args) {
+    dir("${env.DIRECTORY}") {
+        sh "./mvnw ${args.join(' ')}"
+    }
+}
+
+def saveResults() {
+    def summaryFile = sh(script: "find . -name summary.json | xargs cat", returnStdout: true)
+    def summaryJson = readJSON text: summaryFile
+
+    def testResults = JsonOutput.toJson([
+            environment: "$APP_ENV",
+            duration: summaryJson.time.duration,
+            date: "$BUILD_TIMESTAMP",
+            platform: "backend",
+            testType: "regression",
+            testNumber: env.BUILD_NUMBER,
+            statistics: summaryJson.statistic,
+            state: getPlatformState()
+
+    ])
+
+    sendTestResults(testResults)
+}
+
+def getPlatformState() {
+    def response = httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'GET', url: "${DEPLOYMENT_SVC}/deployment/search?environment=${APP_ENV}", validResponseCodes: '200,201', quiet: true
+    def latestDeployments = readJSON text: response.content
+    platformState = [:]
+    latestDeployments.each{ s ->
+        platformState.put(s.application,s.buildNumber)
+    }
+    return platformState
+}
+
+def sendTestResults(testResults) {
+    def response = httpRequest acceptType: 'APPLICATION_JSON', contentType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: testResults, url: "${DEPLOYMENT_SVC}/testing", validResponseCodes: '200,201', quiet: true
+    def testResult = readJSON text: response.content
+    println(testResult)
+}

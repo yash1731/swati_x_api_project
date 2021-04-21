@@ -1,0 +1,11 @@
+{
+  "currentDay": true,
+  "orderStatuses": [
+    "Executed"
+  ],
+  "price": 128,
+  "quantity": 5520,
+  "security": "LTCUSDT",
+  "side": "BUY",
+  "trader": "210509737"
+}

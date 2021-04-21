@@ -1,0 +1,58 @@
+ATI3:
+  createdDate: 2020-02-10T13:08:30.761+0000
+  lastModifiedDate: 2020-02-10T13:08:30.761+0000
+  id: 4
+  userId: null
+  legalName: ATI3 Ltd
+  legalEntityIdentifier: LEG99999
+  addressLine1: St Dunstans Hill
+  addressLine2: null
+  city: London
+  state: London
+  postCode: EC3R 5DD
+  country: United Kingdom
+  businessWebsite: aixtrade.com
+  dateEstablished: 2018-08-07T00:00:00.000+0000
+  ein: EIN12345
+  regNo: REG77777
+  contactNumber: null
+  contactFirstName: ATI3
+  contactLastName: AUTOMATION
+  contactEmail: ati3@aixtrade.com
+  organisationType: L
+  seedCXParticipantId: SEED77780
+  status: APPROVED
+  chatbotName: null
+  chatbotToken: null
+  createdBy: aix-admin
+  lastModifiedBy: aix-admin
+  balanceCheckEnabled: false
+ATI4:
+  createdDate: 2020-02-10T13:08:30.761+0000
+  lastModifiedDate: 2020-02-10T13:08:30.761+0000
+  id: 5
+  userId: null
+  legalName: ATI4 Ltd
+  legalEntityIdentifier: LEG99999
+  addressLine1: St Dunstans Hill
+  addressLine2: null
+  city: London
+  state: London
+  postCode: EC3R 5DD
+  country: United Kingdom
+  businessWebsite: aixtrade.com
+  dateEstablished: 2018-08-07T00:00:00.000+0000
+  ein: EIN12345
+  regNo: REG77777
+  contactNumber: null
+  contactFirstName: ATI4
+  contactLastName: AUTOMATION
+  contactEmail: ati4@aixtrade.com
+  organisationType: L
+  seedCXParticipantId: SEED77781
+  status: APPROVED
+  chatbotName: null
+  chatbotToken: null
+  createdBy: aix-admin
+  lastModifiedBy: aix-admin
+  balanceCheckEnabled: false

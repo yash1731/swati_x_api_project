@@ -1,0 +1,11 @@
+{
+  "currentDay": true,
+  "orderStatuses": [
+    "Executed"
+  ],
+  "price": 127,
+  "quantity": 5620,
+  "security": "LTCUSDT",
+  "side": "SELL",
+  "trader": "tester6@aixtrade.com"
+}

@@ -1,0 +1,112 @@
+ATI3-ADMIN:
+  superAdmin: true
+  admin: true
+  email: ati3@aixtrade.com
+  firstName: ATI3-ADMIN
+  lastName: Automation
+  institutionId: ATI3
+  phone: '44700000000'
+  marketMaker: false
+  trader: false
+  telegramId: null
+ATI4-ADMIN:
+  superAdmin: true
+  admin: true
+  email: ati4@aixtrade.com
+  firstName: ATI4-ADMIN
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: false
+  trader: false
+  telegramId: null
+ATI3-QA-MM-1:
+  email: autotester1@aixtrade.com
+  firstName: ATI3-QA-MM-1
+  lastName: Automation
+  institutionId: ATI3
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: autotester1@aixtrade.com
+  telegramId: null
+ATI3-QA-MM-2:
+  email: autotester1@aixtrade.com
+  firstName: ATI3-QA-MM-2
+  lastName: Automation
+  institutionId: ATI3
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: autotester1@aixtrade.com
+  telegramId: null
+ATI4-QA-MM-1:
+  email: tester1@aixtrade.com
+  firstName: ATI4-QA-MM-1
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: false
+  trader: true
+  symphonyId: tester1@aixtrade.com
+  Telegramid: 673907175
+ATI4-QA-MM-2:
+  email: tester2@aixtrade.com
+  firstName: ATI4-QA-MM-2
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: tester2@aixtrade.com
+  telegramId: null
+ATI4-QA-MM-3:
+  email: tester4@aixtrade.com
+  firstName: ATI4-QA-MM-3
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: tester4@aixtrade.com
+  telegramId: null
+ATI4-QA-MM-4:
+  email: tester6@aixtrade.com
+  firstName: ATI4-QA-MM-4
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: tester6@aixtrade.com
+  telegramId: null
+ATI4-QA-MM-5:
+  email: tester7@aixtrade.com
+  firstName: ATI4-QA-MM-5
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: tester7@aixtrade.com
+  telegramId: null
+ATI4-QA-TD-1:
+  email: tester8@aixtrade.com
+  firstName: ATI4-QA-TD-1
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: false
+  trader: true
+  symphonyId: tester8@aixtrade.com
+  telegramId: null
+ATI4-QA-MM-6:
+  email: tester9@aixtrade.com
+  firstName: ATI4-QA-MM-6
+  lastName: Automation
+  institutionId: ATI4
+  phone: '44700000000'
+  marketMaker: true
+  trader: false
+  symphonyId: tester9@aixtrade.com
+  telegramId: null
